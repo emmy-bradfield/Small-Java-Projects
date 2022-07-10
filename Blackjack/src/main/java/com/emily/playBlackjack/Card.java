@@ -1,5 +1,6 @@
 package com.emily.playBlackjack;
 
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Card {
@@ -8,6 +9,8 @@ public class Card {
 	Boolean playerOne = true;
 	Integer HandOne = 0;
 	Integer HandTwo = 0;
+	Integer PlayerOneHand = 0;
+	Integer PlayerTwoHand = 0;
 	Integer currentCard;
 	Boolean OneHasAce = false;
 	Boolean TwoHasAce = false;
@@ -103,8 +106,8 @@ public class Card {
 		
 	}
 
-	public void playerTwoFirstHand() {
-		System.out.println("\nDealing opponents hand..."); /* use RNG to assign player two a random hand, check for Ace's, and calculate value */
+	public void playerTwoFirstHand() { /* use RNG to assign player two a random hand, check for Ace's, and calculate value */
+		System.out.println("\nDealing opponents hand..."); 
 		setTwoAce(false);
 		int b = 0;
 		b = ThreadLocalRandom.current().nextInt(1, 11);
@@ -140,6 +143,66 @@ public class Card {
 		}
 	}
 
+	public void hitStand() { /* method for determining if players want to hit or stand */
+		Scanner hit = new Scanner(System.in);
+		System.out.print("\nDo you want to hit or stand? Type 'hit' to hit or 'stand' to stand\n>> ");
+		String hitOrStand = hit.nextLine();
+		if (hitOrStand == "Stand" || hitOrStand == "stand" || hitOrStand == "STAND") {
+			PlayerOneHand = HandOne;
+		} else if (hitOrStand == "Hit" || hitOrStand == "hit" || hitOrStand == "HIT") {
+			drawCard();
+		}
+		hit.close();
+		if (HandOne > 21) {
+			PlayerOneHand = HandOne;
+			System.out.print("\nHand Value Exceeds 21: Computer Wins");
+			System.out.print("\n" + playerOne + ": " + PlayerOneHand);
+			System.out.print("\n Computer: " + PlayerTwoHand);
+		}
+	}
 	
+	public Boolean whoDrew() { /* method for working out who drew the card and which total to change */
+		if (playerOne == true) {
+			hitStand();
+			playerOne = false;
+			if (OneHasAce = false) {
+				System.out.print("\t\t\t\t(Total: " + HandOne + ")");
+			} else {
+				System.out.print("\t\t\t\t(Total: " + HandOne + " or " + HandOneAce + ")");
+			}
+		} else {
+			opponentCard();
+			playerOne = true;
+			System.out.print("\n\nOpponent's turn complete, starting your turn!\n");
+		}
+		return playerOne;
+	}
+	
+	public void drawCard() {
+		int a = 0;
+		a = ThreadLocalRandom.current().nextInt(2, 15);
+		if (a < 11) {
+			System.out.print("\t\t  You drew ... " + a + "\n");
+			setCard(a);
+		} else if (a < 12) {
+			System.out.print("\t\tYou drew ... Jack\n");
+			setCard(10);
+		} else if (a < 13) {
+			System.out.print("\t\tYou drew ... Queen\n");
+			setCard(10);
+		} else if (a < 14) {
+			System.out.print("\t\tYou drew ... King\n");
+			setCard(10);
+		} else if (a < 15) {
+			System.out.print("\t\t You drew ... Ace\n");
+			setCard(1);
+			setOneAce(true);
+		}
+		dealtHand();
+	}
+		
+		public void opponentCard() {
+			//TO DO
+		}
 	
 }
