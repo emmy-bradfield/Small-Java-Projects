@@ -7,7 +7,7 @@ public class Main {
 	// =-=-=-=-=-=-=-=-=-=-= Variables =-=-=-=-=-=-=-=-=-=-=
 	Integer a;
 	Integer total = 0;
-
+  
 	// =-=-=-=-=-=-=-=-=-=-= Main Function =-=-=-=-=-=-=-=-=-=-=
 	public static void main(String[] args) {
 		Card card = new Card();
@@ -20,5 +20,4 @@ public class Main {
 		scan.close();
 
 	}
-
 }
