@@ -1,20 +1,18 @@
 package com.emily.playBlackjack;
 
-import java.util.Scanner;
-
 public class Main {
 	
 	// =-=-=-=-=-=-=-=-=-=-= Variables =-=-=-=-=-=-=-=-=-=-=
 	Integer a;
+	Integer b;
 	Integer total = 0;
 	static String playerOne;
   
 	// =-=-=-=-=-=-=-=-=-=-= Main Function =-=-=-=-=-=-=-=-=-=-=
 	public static void main(String[] args) {
-		Card card = new Card();
-		card.firstCard();
-		card.playerTwoFirstHand();
-		card.hitStand();
+		Game blackjack = new Game();
+		blackjack.dealCards();
+		blackjack.playerTurn();
 
 	}
 }
