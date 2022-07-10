@@ -1,24 +1,18 @@
 package com.emily.playBlackjack;
 
-import java.util.Scanner;
-
 public class Main {
 	
 	// =-=-=-=-=-=-=-=-=-=-= Variables =-=-=-=-=-=-=-=-=-=-=
 	Integer a;
+	Integer b;
 	Integer total = 0;
+	static String playerOne;
   
 	// =-=-=-=-=-=-=-=-=-=-= Main Function =-=-=-=-=-=-=-=-=-=-=
 	public static void main(String[] args) {
-		Card card = new Card();
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Hey, welcome to BlackJack! What's your name?\n>> ");
-		String playerOne = scan.nextLine();
-		System.out.print("\nWell nice to meet you, " + playerOne + " lets get started!");
-		System.out.print("\n\t\t [DEALING HAND]\n");
-		card.firstCard();
-		card.playerTwoFirstHand();
-		scan.close();
+		Game blackjack = new Game();
+		blackjack.dealCards();
+		blackjack.playerTurn();
 
 	}
 }
