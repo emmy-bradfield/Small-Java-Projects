@@ -35,11 +35,11 @@ public class Card {
 		this.OneHasAce = OneHasAce;
 	}
 
-	public boolean getTwoAce() {
+	public boolean getTwoAce() { /* get if player two has an Ace */
 		return TwoHasAce;
 	}
 
-	public void setTwoAce(boolean TwoHasAce) {
+	public void setTwoAce(boolean TwoHasAce) { /* set if player two has an Ace */
 		this.TwoHasAce = TwoHasAce;
 	}
 
