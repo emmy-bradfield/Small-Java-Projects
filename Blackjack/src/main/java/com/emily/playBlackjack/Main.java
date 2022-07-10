@@ -6,6 +6,7 @@ public class Main {
 	Integer a;
 	Integer b;
 	Integer total = 0;
+	static String playerOne;
   
 	// =-=-=-=-=-=-=-=-=-=-= Main Function =-=-=-=-=-=-=-=-=-=-=
 	public static void main(String[] args) {
